@@ -1,17 +1,25 @@
 /** @type {import("express").RequestHandler} */
 
-const express = require('express');
-const  cors = require('cors');
-const  morgan = require('morgan');
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import { dbConnection } from './database/config';
+import carRoutes from './routes/cars';
 
 const app = express();
 
+dbConnection();
 
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get("/", (req, res, next)=>{
-    return res.send("Hello - typeScrpt");
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-module.exports = app;
+app.get('/', (req, res, next) => {
+  return res.send('API Rest - typeScrpt');
+});
+
+app.use('/api/cars', carRoutes);
+
+export default app;
