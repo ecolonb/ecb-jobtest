@@ -21,6 +21,9 @@ const CarSchema = new Schema({
     type: String,
     max: [100, 'Max char is 100']
   },
+  km: {
+    type: Number
+  },
   image: {
     type: String
   },
