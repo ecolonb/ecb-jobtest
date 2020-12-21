@@ -36,7 +36,8 @@ const CarSchema = new Schema({
     default: undefined
   },
   mechanic: {
-    type: String
+    type: String,
+    default: ''
   },
   deleted_at: {
     type: Date,

@@ -28,7 +28,7 @@ export async function putInMaintenance(req, res, next) {
       updated_at: new Date(),
       in_maintenance: inMaintenance
     };
-    await Car.findOneAndUpdate(_id, changes);
+    await Car.findByIdAndUpdate(_id, changes);
     const car = await Car.findById(_id);
     return res.status(200).json({ ok: true, car });
   } catch (err) {
