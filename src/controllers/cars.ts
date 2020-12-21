@@ -1,4 +1,4 @@
-import Car from '../models/cars';
+import Car from "../models/cars";
 
 export async function newCar(req, res, next) {
   try {
@@ -26,8 +26,9 @@ export async function putInMaintenance(req, res, next) {
     const changes = {
       mechanic,
       updated_at: new Date(),
-      in_maintenance: inMaintenance
+      in_maintenance: inMaintenance,
     };
+    console.log("changes: ", changes);
     await Car.findOneAndUpdate(_id, changes);
     const car = await Car.findById(_id);
     return res.status(200).json({ ok: true, car });
